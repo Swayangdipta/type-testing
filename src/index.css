@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.greenBg{
+    background: #27ff59;
+}
+
+.textWhite{
+    color: azure !important;
+}

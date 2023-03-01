@@ -1,12 +1,18 @@
-import React,{useContext} from 'react'
+import React,{useContext, useState} from 'react'
+import { BsArrowRight, BsChevronRight } from 'react-icons/bs'
 import { ControlContext } from '../ControlContext'
+import Compare from './Compare'
 
 const Evaluations = () => {
     const [control,setControl] = useContext(ControlContext)
+    const [compareOpen,setCompareOpen] = useState(false)
 
   return (
     <div className='w-full h-full px-5 py-2'>
-        <h1 className='text-[24px] text-zinc-100 select-none underline'>Results</h1>
+        <div className='flex items-center justify-between'>
+            <h1 className='text-[24px] text-zinc-100 select-none underline'>Results</h1>
+            <button onClick={e=>setCompareOpen(true)} className='flex items-center justify-center gap-1 bg-zinc-200 px-[10px] py-[5px] rounded-md font-[500] hover:bg-amber-100'>Compare <BsChevronRight /></button>
+        </div>
         <div className='flex items-center justify-between border-b-[1px] border-zinc-600 py-2 select-none'>
             <p className='text-zinc-300 text-[20px]'>Keystrokes</p>
             <p className='w-[30px] h-[30px] rounded-full bg-zinc-300 flex items-center justify-center font-[500]'>{control.keystrokes}</p>
@@ -23,6 +29,10 @@ const Evaluations = () => {
             <p className='text-rose-600 text-[20px]'>Mistakes</p>
             <p className='w-[30px] h-[30px] rounded-full bg-rose-600 flex items-center justify-center font-[500]'>{control.mistakes}</p>
         </div>
+
+        {
+            compareOpen && (<Compare setCompareOpen={setCompareOpen} />)
+        }
     </div>
   )
 }

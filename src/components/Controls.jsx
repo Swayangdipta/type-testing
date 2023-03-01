@@ -17,29 +17,29 @@ const Controls = () => {
     let twenty = document.getElementById('twenty')
     let thirty = document.getElementById('thirty')
     if(id === 'ten'){
-      ten.classList.add('bg-emerald-500')
-      ten.classList.add('text-white')
+      // ten.classList.add('textWhite')
+      ten.classList.add('greenBg')
 
-      twenty.classList.remove('bg-emerald-500')
-      twenty.classList.remove('text-white')
-      thirty.classList.remove('bg-emerald-500')
-      thirty.classList.remove('text-white')
+      twenty.classList.remove('greenBg')
+      // twenty.classList.remove('text-white')
+      thirty.classList.remove('greenBg')
+      // thirty.classList.remove('text-white')
     }else if(id === 'twenty'){
-      twenty.classList.add('bg-emerald-500')
-      twenty.classList.add('text-white')
+      twenty.classList.add('greenBg')
+      // twenty.classList.add('text-white')
 
-      ten.classList.remove('bg-emerald-500')
-      ten.classList.remove('text-white')
-      thirty.classList.remove('bg-emerald-500')
-      thirty.classList.remove('text-white')
+      ten.classList.remove('greenBg')
+      // ten.classList.remove('text-white')
+      thirty.classList.remove('greenBg')
+      // thirty.classList.remove('text-white')
     }else{
-      thirty.classList.add('bg-emerald-500')
-      thirty.classList.add('text-white')
+      thirty.classList.add('greenBg')
+      // thirty.classList.add('text-white')
 
-      ten.classList.remove('bg-emerald-500')
-      ten.classList.remove('text-white')
-      twenty.classList.remove('bg-emerald-500')
-      twenty.classList.remove('text-white')
+      ten.classList.remove('greenBg')
+      // ten.classList.remove('text-white')
+      twenty.classList.remove('greenBg')
+      // twenty.classList.remove('text-white')
     }
   }
 
@@ -57,7 +57,7 @@ const Controls = () => {
   }
 
   const handleReset = () => {
-    setControl({...control,isStarted: false,isSubmitted:false,elapsedTime: 0,mistakes: 0,correct: 0,keystrokes: 0})
+    setControl({...control,isStarted: false,isSubmitted:false,elapsedTime: 0,mistakes: 0,correct: 0,keystrokes: 0,typedText: '',story: ''})
     clearInterval(interId)
   }
 

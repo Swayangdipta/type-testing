@@ -11,7 +11,9 @@ export const ControlProvider = props => {
         intervalId: '',
         mistakes: 0,
         correct: 0,
-        keystrokes: 0
+        keystrokes: 0,
+        typedText: '',
+        story: ''
     })
 
     return(

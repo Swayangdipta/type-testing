@@ -20,7 +20,7 @@ const TypingSection = () => {
                 mistakes++
             }                
         }
-        setControl({...control,correct: correct,mistakes: mistakes,keystrokes: strokes})
+        setControl({...control,correct: correct,mistakes: mistakes,keystrokes: strokes,typedText: typedText})
         setTypedText('')
     }
 
@@ -31,7 +31,7 @@ const TypingSection = () => {
     },[control.isSubmitted])
   return (
     <div className='w-full h-[50%] bg-zinc-800 rounded-md p-5'>
-        <textarea value={typedText} onChange={e => setTypedText(e.target.value)} disabled={!control.isStarted} className='bg-[transparent] w-full h-full outline-none text-emerald-300 text-[20px]' placeholder='Start typing...' />
+        <textarea autoFocus value={typedText} onChange={e => setTypedText(e.target.value)} disabled={!control.isStarted} className='bg-[transparent] w-full h-full outline-none text-emerald-300 text-[20px]' placeholder='Start typing...' />
     </div>
   )
 }
