@@ -59,6 +59,7 @@ const Controls = () => {
   const handleReset = () => {
     setControl({...control,isStarted: false,isSubmitted:false,elapsedTime: 0,mistakes: 0,correct: 0,keystrokes: 0,typedText: '',story: ''})
     clearInterval(interId)
+    window.location.href = '/'
   }
 
   useEffect(()=>{
@@ -72,7 +73,7 @@ const Controls = () => {
         <h1 className='text-zinc-100 text-[20px] px-3 py-2 select-none'>Controls</h1>
         <h2 className='mt-4 px-3 text-[18px] select-none flex items-center gap-2 text-zinc-100'><BsFillClockFill />Time</h2>
         <div className='w-full mt-4 px-3 flex items-center justify-between'>
-          <div id='ten' onClick={e=> handleTime(600)(e)} className='w-12 h-12 font-[500] text-zinc-800 rounded-full flex items-center justify-center bg-zinc-300 cursor-pointer'>10m</div>
+          <div id='ten' onClick={e=> handleTime(600)(e)} className='w-12 h-12 font-[500] text-zinc-800 rounded-full flex items-center justify-center bg-zinc-300 cursor-pointer greenBg'>10m</div>
           <div id='twenty' onClick={e=> handleTime(900)(e)} className='w-12 h-12 font-[500] text-zinc-800 rounded-full flex items-center justify-center bg-zinc-300 cursor-pointer'>15m</div>
           <div id='thirty' onClick={e=> handleTime(1200)(e)} className='w-12 h-12 font-[500] text-zinc-800 rounded-full flex items-center justify-center bg-zinc-300 cursor-pointer'>20m</div>
         </div>

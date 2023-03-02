@@ -9,3 +9,12 @@
 .textWhite{
     color: azure !important;
 }
+
+*::-webkit-scrollbar{
+    width: 7px;
+    background: #909090;
+}
+
+*::-webkit-scrollbar-thumb{
+    background: #000f40;
+}
