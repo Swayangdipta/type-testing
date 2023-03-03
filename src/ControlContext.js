@@ -14,7 +14,8 @@ export const ControlProvider = props => {
         keystrokes: 0,
         typedText: '',
         story: '',
-        counter: 0
+        counter: 0,
+        highScore: 0
     })
 
     return(

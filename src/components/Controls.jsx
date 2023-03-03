@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from 'react'
 import { BsFillClockFill, BsFillPlayCircleFill } from 'react-icons/bs'
 import { BiChevronsRight, BiReset } from 'react-icons/bi'
 import { ControlContext } from '../ControlContext'
-import { setUserHighScore } from './helper/HighScore_LS_Helper'
 import { TimeContext } from '../TimeContext.'
 
 const Controls = () => {
@@ -58,7 +57,6 @@ const Controls = () => {
   const handleSubmit = () => {
     setControl({...control,isStarted: false,isSubmitted:true})
     // if(control.keystrokes < control.story.length / 2){
-      setUserHighScore(Math.floor(control.keystrokes / (control.elapsedTime/60)))
     // }
     clearInterval(interId)
   }

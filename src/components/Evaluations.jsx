@@ -3,11 +3,21 @@ import { BsArrowRight, BsChevronRight } from 'react-icons/bs'
 import { ControlContext } from '../ControlContext'
 import { TimeContext } from '../TimeContext.'
 import Compare from './Compare'
+import { setUserHighScore } from './helper/HighScore_LS_Helper'
 
 const Evaluations = () => {
     const [control,setControl] = useContext(ControlContext)
     const [time,setTime] = useContext(TimeContext)
     const [compareOpen,setCompareOpen] = useState(false)
+
+    useEffect(()=>{
+        if(control.isSubmitted && control.keystrokes > 0){
+          setUserHighScore(Math.floor(control.keystrokes / (time.elapsedTime/60)))
+          if(Math.floor(control.keystrokes / (time.elapsedTime/60)) > control.highScore){
+            setControl({...control,highScore: Math.floor(control.keystrokes / (time.elapsedTime/60))})            
+          }
+        }
+      },[control.keystrokes])
 
   return (
     <div className='w-full h-full px-5 py-2'>

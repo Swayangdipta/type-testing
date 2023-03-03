@@ -16,9 +16,9 @@ const Compare = ({setCompareOpen=f=>f}) => {
         <div className='w-full h-full rounded-md bg-zinc-900 overflow-y-scroll p-5 text-zinc-400 text-[24px] select-none'>
             {
                 control.story.length > control.typedText.length ?  control.typedText.split('').map((char,i)=>(
-                    char === control.story[i] ? (<span className='text-emerald-400'>{char}</span>) : (<span className='text-rose-600'>{char}</span>)
+                    char === control.story[i] ? (<span key={i} className='text-emerald-400'>{char}</span>) : (<span key={i} className='text-rose-600'>{char}</span>)
                 )) : control.story.split('').map((char,i)=>(
-                    char === control.typedText[i] ? (<span className='text-emerald-400'>{control.typedText[i]}</span>) : (<span className='text-rose-600'>{control.typedText[i]}</span>)
+                    char === control.typedText[i] ? (<span key={i} className='text-emerald-400'>{control.typedText[i]}</span>) : (<span key={i} className='text-rose-600'>{control.typedText[i]}</span>)
                 ))
             }
         </div>
