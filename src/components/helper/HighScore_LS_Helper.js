@@ -10,7 +10,6 @@ export const getUserHighScore = () => {
 }
 
 export const setUserHighScore = score => {
-    console.log(score);
     if(typeof window !== 'undefined'){
         if(localStorage.getItem('typeTestHighScore')){
             if(score > JSON.parse(localStorage.getItem('typeTestHighScore'))){
