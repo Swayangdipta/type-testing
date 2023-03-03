@@ -4,6 +4,7 @@ import { ControlContext } from '../ControlContext'
 
 const Compare = ({setCompareOpen=f=>f}) => {
     const [control,setControl] = useContext(ControlContext)
+
   return (
     <div className='flex fixed top-[80px] left-[30px] bg-zinc-900 rounded-md justify-between w-[calc(100vw_-_60px)] mx-auto py-[30px] h-[calc(100vh_-_110px)] gap-10'>
         <button onClick={e=>setCompareOpen(false)} className='bg-rose-600 fixed top-[90px] left-[40px] font-[500] rounded-md px-[10px] py-[5px] flex items-center justify-center gap-1'><BsChevronLeft/> Close</button>

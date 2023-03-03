@@ -2,9 +2,12 @@ import React, { useContext, useEffect, useState } from 'react'
 import { BsFillClockFill, BsFillPlayCircleFill } from 'react-icons/bs'
 import { BiChevronsRight, BiReset } from 'react-icons/bi'
 import { ControlContext } from '../ControlContext'
+import { setUserHighScore } from './helper/HighScore_LS_Helper'
+import { TimeContext } from '../TimeContext.'
 
 const Controls = () => {
   const [control,setControl] = useContext(ControlContext)
+  const [time,setTime] = useContext(TimeContext)
   const [interId,setInterId] = useState(undefined)
 
   const handleTime = val => e => {
@@ -45,28 +48,33 @@ const Controls = () => {
 
   const handleStart = val => {
     let toutId
+    setControl({...control,isStarted: true,isSubmitted:false})
     toutId = setInterval(()=>{
-      setControl({...control,isStarted: true,isSubmitted:false,elapsedTime: control.elapsedTime++})
+      setTime({...time,elapsedTime: time.elapsedTime++})
     },1000)     
     setInterId(toutId)
   }
 
   const handleSubmit = () => {
     setControl({...control,isStarted: false,isSubmitted:true})
+    // if(control.keystrokes < control.story.length / 2){
+      setUserHighScore(Math.floor(control.keystrokes / (control.elapsedTime/60)))
+    // }
     clearInterval(interId)
   }
 
   const handleReset = () => {
     setControl({...control,isStarted: false,isSubmitted:false,elapsedTime: 0,mistakes: 0,correct: 0,keystrokes: 0,typedText: '',story: ''})
+    setTime({...time,elapsedTime: 0})
     clearInterval(interId)
     window.location.href = '/'
   }
 
   useEffect(()=>{
-    if(control.elapsedTime === control.totalTime){
+    if(time.elapsedTime === control.totalTime){
       handleSubmit()
     }
-  },[control.elapsedTime])
+  },[time.elapsedTime])
 
   return (
     <div className='w-[300px] h-[300px] rounded-md bg-zinc-900'>

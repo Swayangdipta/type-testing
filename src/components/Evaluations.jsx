@@ -1,10 +1,12 @@
-import React,{useContext, useState} from 'react'
+import React,{useContext, useEffect, useState} from 'react'
 import { BsArrowRight, BsChevronRight } from 'react-icons/bs'
 import { ControlContext } from '../ControlContext'
+import { TimeContext } from '../TimeContext.'
 import Compare from './Compare'
 
 const Evaluations = () => {
     const [control,setControl] = useContext(ControlContext)
+    const [time,setTime] = useContext(TimeContext)
     const [compareOpen,setCompareOpen] = useState(false)
 
   return (
@@ -19,7 +21,7 @@ const Evaluations = () => {
         </div>
         <div className='flex items-center justify-between border-b-[1px] border-amber-300 py-2 select-none'>
             <p className='text-amber-300 text-[20px]'>Speed (letter/min)</p>
-            <p className='w-[30px] h-[30px] rounded-full bg-amber-300 flex items-center justify-center font-[500]'>{Math.floor(control.keystrokes / (control.elapsedTime/60))}</p>
+            <p className='w-[30px] h-[30px] rounded-full bg-amber-300 flex items-center justify-center font-[500]'>{Math.floor(control.keystrokes / (time.elapsedTime/60))}</p>
         </div>
         <div className='flex items-center justify-between border-b-[1px] border-emerald-600 py-2 select-none'>
             <p className='text-emerald-300 text-[20px]'>Correct</p>

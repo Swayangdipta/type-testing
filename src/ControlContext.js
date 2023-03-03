@@ -13,7 +13,8 @@ export const ControlProvider = props => {
         correct: 0,
         keystrokes: 0,
         typedText: '',
-        story: ''
+        story: '',
+        counter: 0
     })
 
     return(

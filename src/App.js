@@ -4,9 +4,11 @@ import Results from './components/Results';
 import TextToWriteSection from './components/TextToWriteSection';
 import TypingSection from './components/TypingSection';
 import { ControlProvider } from './ControlContext';
+import { TimeProvider } from './TimeContext.';
 function App() {
   return (
     <ControlProvider>
+      <TimeProvider>
       <div className="w-screen h-screen fixed top-0 left-0 bg-zinc-700">
         <header className="w-screen h-[50px] bg-zinc-900">
           <div className="ml-[30px] h-full flex gap-2 items-center justify-start select-none">
@@ -25,6 +27,7 @@ function App() {
           </div>
         </div>
       </div>    
+      </TimeProvider>
     </ControlProvider>
   );
 }
