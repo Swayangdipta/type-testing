@@ -7,12 +7,16 @@ const TypingSection = () => {
 
     const evaluate = () => {
         let originalStory = control.story.split('')
+        let originalWords = control.story.split(' ')
         let userTypedStory = typedText.split('')
-        let correct = 0,mistakes = 0,strokes = userTypedStory.length
-        console.log((userTypedStory.length / (control.elapsedTime/60))+" letter/min");
+        let userTypedWords = typedText.trim().split(' ')
+        let isCorrectPosition = []
+        let correct = 0,mistakes = 0,strokes = userTypedStory.length,correctWords = 0, wrongWords = 0
+        console.log(userTypedWords);
 
         let lengthOfLoop = originalStory.length > userTypedStory.length ? userTypedStory.length : originalStory.length
-
+        let lengthOfLoopWords = originalWords.length > userTypedWords.length ? userTypedWords.length : originalWords.length
+        isCorrectPosition.fill("1",0,lengthOfLoopWords)
         for (let index = 0; index < lengthOfLoop; index++) {
             if(originalStory[index] === userTypedStory[index]){
                 correct++
@@ -20,8 +24,31 @@ const TypingSection = () => {
                 mistakes++
             }                
         }
-        setControl({...control,correct: correct,mistakes: mistakes,keystrokes: strokes,typedText: typedText})
+
+        for(let index = 0; index < lengthOfLoopWords; index++){
+            if(userTypedWords[index] === originalWords[index]){
+                correctWords++
+                isCorrectPosition[index] = "1"
+            }else{
+                if(userTypedWords[index].length !== originalWords[index].length){
+                    isCorrectPosition[index] = 0
+                }else{
+                    let arr = []
+                    for(let j = 0; j < userTypedWords[index].length; j++){
+                        if(userTypedWords[index][j] !== originalWords[index][j]){
+                            arr.push(j)
+                        }
+                    }
+                    isCorrectPosition[index] = arr
+                }
+                wrongWords++
+            }
+        }
+
+        setControl({...control,correct: correct,mistakes: mistakes,keystrokes: strokes,typedText: typedText,isCorrectPosition: isCorrectPosition})
         setTypedText('')
+        console.log(isCorrectPosition);
+        console.log(correctWords);
     }
 
     useEffect(()=>{
