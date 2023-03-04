@@ -18,3 +18,18 @@
 *::-webkit-scrollbar-thumb{
     background: #000f40;
 }
+
+.spin-overlay{
+    animation: spinOverlay 5s;
+}
+
+@keyframes spinOverlay {
+    from {
+        transform: rotateZ('0deg');
+        top: 150px;
+    }
+    to {
+        top: 0px;
+        transform: rotateZ('360deg');
+    }
+}
